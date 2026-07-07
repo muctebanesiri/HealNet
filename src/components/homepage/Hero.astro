@@ -1,36 +1,52 @@
 ---
 import Image from "astro/components/Image.astro";
-import { ChevronRight } from "@lucide/astro";
+// ✅ RTL: ChevronLeft for RTL direction
+import { ChevronLeft } from "@lucide/astro";
 ---
 
-<section class="section section-hero py-10 sm:py-20 my-0!">
+<!-- ✅ Added dir="rtl" for proper RTL text direction -->
+<section class="section section-hero py-10 sm:py-20 my-0!" dir="rtl">
   <div class="container">
     <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
-      <div class="text-center sm:text-left">
+      <!-- ✅ RTL: text-right instead of text-left -->
+      <div class="text-center sm:text-right">
         <h1>
-          دکتر <span
-            class="bg-linear-to-r from-[#0179B4] to-[#88D8FF] bg-clip-text text-transparent"
+          دکتر
+          <!-- ✅ RTL: gradient from right to left -->
+          <span
+            class="bg-linear-to-l from-[#0179B4] to-[#88D8FF] bg-clip-text text-transparent"
             >رضا توکلی</span
-          > متخصص بیماری های دهان، فک و صورت.
+          >
+          متخصص بیماری های دهان، فک و صورت.
         </h1>
         <p class="mt-8 mb-10">
           <span class="text-main-200"
             >Empowering Your Health at Every Step.</span
-          > Experience personalized medical care from the comfort of your home. Connect
-          with <span class="text-main-200">certified doctors</span>, or manage
-          prescriptions, and schedule appointments with ease. Ready to take
-          control of your health? <span class="text-main-200">Get Started</span> or
-          Book an Appointment today.
+          >
+          Experience personalized medical care from the comfort of your home.
+          Connect with <span class="text-main-200">certified doctors</span>, or
+          manage prescriptions, and schedule appointments with ease. Ready to
+          take control of your health?
+          <span class="text-main-200">Get Started</span> or Book an Appointment
+          today.
         </p>
+        <!--
+          ✅ RTL: gradient direction flipped from 125deg → -125deg
+          ✅ RTL: ChevronLeft icon instead of ChevronRight
+        -->
         <a
           href="#"
-          class="btn bg-[linear-gradient(125deg,var(--color-main-100),var(--color-main-200))] text-white border-0 rounded-xl text-lg py-3 px-6 h-auto shadow-xl hover:shadow-2xl"
-          >Book an appointment <ChevronRight /></a
+          class="btn bg-[linear-gradient(-125deg,var(--color-main-100),var(--color-main-200))] text-white border-0 rounded-xl text-lg py-3 px-6 h-auto shadow-xl hover:shadow-2xl"
+          >Book an appointment <ChevronLeft /></a
         >
 
         <p class="text-sm text-gray-400 mt-10 mb-6">
           Trusted by millions across the globe:
         </p>
+        <!--
+          ✅ RTL: mx-auto centers on mobile, sm:mx-0 aligns to the right
+          on larger screens in RTL context
+        -->
         <Image
           src="/img/brands.webp"
           alt="Brands"
@@ -58,8 +74,12 @@ import { ChevronRight } from "@lucide/astro";
             class="w-auto h-auto mx-auto [grid-area:1/1/2/2]"
           />
           <div class="[grid-area:1/1/2/2] mt-auto">
+            <!--
+              ✅ RTL: gradient direction flipped from -125deg → 125deg
+              ✅ RTL: mr-auto instead of ml-auto (push to left in RTL)
+            -->
             <div
-              class="border-main-200 border-2 rounded-xl p-5 bg-[linear-gradient(-125deg,#E9F6FF_0%,#ffffff_100%)] hidden sm:block sm:max-w-[40%] ml-auto"
+              class="border-main-200 border-2 rounded-xl p-5 bg-[linear-gradient(125deg,#E9F6FF_0%,#ffffff_100%)] hidden sm:block sm:max-w-[40%] mr-auto"
             >
               <div class="flex flex-wrap gap-3 items-center">
                 <Image
@@ -98,11 +118,15 @@ import { ChevronRight } from "@lucide/astro";
               </svg>
               Easy Appointment Booking
             </div>
+            <!--
+              ✅ RTL: gradient direction flipped from -125deg → 125deg
+              ✅ RTL: mr-auto instead of ml-auto
+              ✅ RTL: right-5 instead of left-5 for the quote SVG
+            -->
             <div
-              class="relative border-main-200 border-2 rounded-xl p-5 pt-8 bg-[linear-gradient(-125deg,#E9F6FF_0%,#ffffff_100%)] hidden sm:flex sm:max-w-[60%] ml-auto mt-10 -mb-10 before:content-[''] before:absolute before:w-16.25 before:h-16.25 before:bg-[url('/img/icons/quote.svg')] before:bg-contain before:bg-no-repeat before:-top-8 before:left-5 text-black"
+              class="relative border-main-200 border-2 rounded-xl p-5 pt-8 bg-[linear-gradient(125deg,#E9F6FF_0%,#ffffff_100%)] hidden sm:flex sm:max-w-[60%] mr-auto mt-10 -mb-10 before:content-[''] before:absolute before:w-16.25 before:h-16.25 before:bg-[url('/img/icons/quote.svg')] before:bg-contain before:bg-no-repeat before:-top-8 before:right-5 text-black"
             >
-              Lorem ipsum dolor sit amet, ligula ego. consectetuer adipiscing
-              elit doloras.
+              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ.
             </div>
           </div>
         </div>
